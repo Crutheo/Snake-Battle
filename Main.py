@@ -135,8 +135,8 @@ while True:
 
     # Collision between snakes bodies
 
-    col.check_snake_collision(red.head, red.segment, blue.segment, -160, red.score, red.lapiz, red.text)
-    col.check_snake_collision(blue.head, blue.segment, red.segment, 160, blue.score, blue.lapiz, blue.text)
+    col.check_snake_collision(red.head, red.segment, blue.segment, -160, red.score, red.lapiz, red.text, red.dict)
+    col.check_snake_collision(blue.head, blue.segment, red.segment, 160, blue.score, blue.lapiz, blue.text, blue.dict)
 
     # Movement red and blue loop
 
