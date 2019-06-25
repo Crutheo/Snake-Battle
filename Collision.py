@@ -32,12 +32,12 @@ def check_collission(head, segment, pos, score, pen, text,dict):
             segment.clear()
 
 
-def check_snake_collision(head, segment, opponent_segment, pos, score, pen, text):
+def check_snake_collision(head, segment, opponent_segment, pos, score, pen, text, dict):
     for body in opponent_segment:
         if body.distance(head) < 20:
             head.goto(pos, 0)
             head.direction = "stop"
-
+            dict["Score"] = 0
             score = 0
             text = "Score: %s" % score
             pen.clear()
