@@ -22,4 +22,3 @@ def move(head):
         if x > 280:
             x = 280
         head.setx(x + 20)
-
