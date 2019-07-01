@@ -28,6 +28,8 @@ class Snake:
         self.segment = []
 
         self.dict = {"Color": color, "Score": self.score, "Direction": self.head.direction}
+        self.parts = {"Pen": self.lapiz, "Head": self.head, "Text": self.text, "Segment": self.segment,
+                      "InitialPos": pos_snake}
 
 
 class Food:
@@ -54,21 +56,20 @@ def snake_body(segment, head):
         segment[0].goto(x, y)
 
 
-def eat(food, head, segment, score, pen, text, color, dict):
-    if head.distance(food) < 20:
+def eat(food, dict, parts):
+    if parts["Head"].distance(food) < 20:
         x_move = random.randint(-14, 14) * 20
         y_move = random.randint(-14, 13) * 20
         food.goto(x_move, y_move)
 
         dict["Score"] = dict["Score"] + 1
-        score = score + 1
-        text = "Score: %s" % dict["Score"]
-        pen.clear()
-        pen.write(text, False, align="Left", font=("Arial", 14, "normal"))
+        parts["Text"] = "Score: %s" % dict["Score"]
+        parts["Pen"].clear()
+        parts["Pen"].write(parts["Text"], False, align="Left", font=("Arial", 14, "normal"))
 
         body = turtle.Turtle()
         body.penup()
         body.speed(0)
-        body.color("dark "+color)
+        body.color("dark "+dict["Color"])
         body.shape("square")
-        segment.append(body)
+        parts["Segment"].append(body)
