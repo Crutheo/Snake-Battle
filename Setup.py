@@ -1,5 +1,4 @@
 import turtle
-import random
 
 
 class Snake:
@@ -28,6 +27,7 @@ class Snake:
         self.segment = []
 
         self.dict = {"Color": color, "Score": self.score, "Direction": self.head.direction}
+
         self.parts = {"Pen": self.lapiz, "Head": self.head, "Text": self.text, "Segment": self.segment,
                       "InitialPos": pos_snake}
 
@@ -54,22 +54,3 @@ def snake_body(segment, head):
         y = head.ycor()
         x = head.xcor()
         segment[0].goto(x, y)
-
-
-def eat(food, dict, parts):
-    if parts["Head"].distance(food) < 20:
-        x_move = random.randint(-14, 14) * 20
-        y_move = random.randint(-14, 13) * 20
-        food.goto(x_move, y_move)
-
-        dict["Score"] = dict["Score"] + 1
-        parts["Text"] = "Score: %s" % dict["Score"]
-        parts["Pen"].clear()
-        parts["Pen"].write(parts["Text"], False, align="Left", font=("Arial", 14, "normal"))
-
-        body = turtle.Turtle()
-        body.penup()
-        body.speed(0)
-        body.color("dark "+dict["Color"])
-        body.shape("square")
-        parts["Segment"].append(body)
