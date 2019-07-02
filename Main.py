@@ -87,13 +87,8 @@ while True:
     screen.update()
     time.sleep(delay)
 
-    setup.eat(food.food, red.dict, red.parts)
-    setup.eat(food.food, blue.dict, blue.parts)
-
-    col.check_collission(red.dict, red.parts)
-    col.check_collission(blue.dict, blue.parts)
-    col.check_snake_collision(red.dict, red.parts, blue.parts)
-    col.check_snake_collision(blue.dict, blue.parts, red.parts)
+    col.check_collission(red.dict, red.parts, food.food, blue.parts)
+    col.check_collission(blue.dict, blue.parts, food.food, red.parts)
 
     setup.snake_body(red.segment, red.head)
     setup.snake_body(blue.segment, blue.head)
